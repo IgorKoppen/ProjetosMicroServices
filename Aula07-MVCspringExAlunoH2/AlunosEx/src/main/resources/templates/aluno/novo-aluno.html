@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro aluno</title>
+    <link rel="stylesheet"  th:href="@{/bootstrap-5.3.2-dist/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid d-flex justify-content-center  min-vh-100">
+    <div class="align-self-center">
+<h1>Cadastro de aluno</h1>
+<form name="form-cadastro" action="#" method="post" th:action="@{/Alunos/salvar}" th:object="${aluno}">
+    <label for="nome">Nome do Aluno: </label>
+    <input class="form-control" type="text" id="nome" name="nome" th:field="*{nome}" placeholder="Nome do aluno"/> <br/>
+    <label for="email">Email:</label>
+    <input class="form-control" type="email" id="email" name="email" th:field="*{email}" placeholder="email do aluno"/> <br/>
+    <label for="rm">rm:</label>
+    <input class="form-control" type="text" id="rm" name="rm" th:field="*{rm}" placeholder="rm do aluno"/> <br/>
+    <label for="turma">turma:</label>
+    <input class="form-control" type="text" id="turma" name="turma" th:field="*{turma}" placeholder="turma do aluno"/> <br/>
+    <div class="d-flex justify-content-around">
+    <input class="btn btn-primary" type="submit" value="Salvar"/>
+    <input class="btn btn-warning" type="reset" value="Limpar"/>
+    </div>
+</form>
+</div>
+</div>
+</body>
+<script th:src="@{bootstrap-5.3.2-dist/js/bootstrap.min.js}"></script>
+<script th:src="@{jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
+</html>
