@@ -6,7 +6,7 @@
     <title>Lista de Produtos</title>
 </head>
 <body>
-<div layout:fragment="conteudo">
+<div layout:fragment="conteudo" >
     <div class="container">
         <div class="row">
             <div class="col">
@@ -27,16 +27,14 @@
                     </tr>
                      <!--Editar -->
                     <tr th:each="produto : ${produtos}">
-                        <td><span th:text="${produto.nome}" >  </span></td>
+                        <td><span th:text="${produto.nome}">  </span></td>
                         <td><span th:text="${produto.descricao}">  </span></td>
                         <td><span th:text="'R$' + ${produto.valor}"> </span></td>
                         <td>
-                            <a class="btn btn-danger btn-xs" type="submit"  th:href="'/produtos/excluir/' + ${produto.id}"> Excluir</a>
+                            <a class="btn btn-danger btn-xs"  th:href="'/produtos/excluir/' + ${produto.id}"> Excluir</a>
                         </td>
                         <td>
-                            <form th:action="@{/produtos/alterar}" th:object="${produto}" method="post">
-                                <a class="btn btn-primary btn-xs" type="submit" > Editar</a>
-                            </form>
+                                <a class="btn btn-primary btn-xs" th:href="@{/produtos/editar/{id}(id=${produto.id})}"> Editar</a>
                         </td>
                     </tr>
                     </tbody>

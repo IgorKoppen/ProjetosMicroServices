@@ -20,7 +20,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank(message = "Campo requerido")
     @Size(min = 3, message = "O nome deve ter no mínimo 3 carateres")
@@ -38,18 +38,18 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(int id, String nome, String descricao, Double valor) {
+    public Produto(Long id, String nome, String descricao, Double valor) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
