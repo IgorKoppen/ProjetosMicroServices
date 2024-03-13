@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{template.html}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Lista de Produtos</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Lista de Lojas</h1>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Contato</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${lojas.empty}">
+                        <td colspan="6">Lista de Lojas vazia</td>
+                    </tr>
+                    <tr th:each="loja : ${lojas}" >
+                        <td><span th:text="${loja.nome}"> Nome da Loja </span></td>
+                        <td><span th:text="${loja.endereco}"> Endereço </span></td>
+                        <td><span th:text="${loja.contato}"> Nome do Contato </span></td>
+                        <td><span th:text="${loja.email}"> E-mail </span></td>
+                        <td><span th:text="${loja.telefone}"> Telefone </span></td>
+                        <td>
+                            <a class="btn btn-danger btn-xs"
+                            th:href="@{/lojas/deletar/{id}(id=${loja.id})}"
+                               th:data-confirm-delete="|Deseja excluir ${loja.nome}?|"
+                               onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">
+                                Excluir</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-xs"
+                            th:href="@{/lojas/editar/{id}(id=${loja.id})}"> Editar</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
