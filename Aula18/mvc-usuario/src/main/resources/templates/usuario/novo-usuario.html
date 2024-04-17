@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{template.html}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Cadastro de Usuários</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Cadastro de Usuários</h2>
+        <!--  verifica se a mensagem não é nula, se existe na requisição (chave,valor) -->
+        <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          <!-- se exite a mensagem, vai mostrar aqui -->
+          <span th:text="${mensagem}"></span>
+        </div>
+        <!--  th:action - vai encaminhar para o mapeamento /usuario/salvar -->
+        <!--  th:object faz referencia ao obj -  th:object="${produto} - é o objeto enviado pelo controller - chave -->
+        <form action="#" th:action="@{/users}" th:object="${user}" method="post">
+          <div class="row mb-3">
+            <label for="nome" class="col-sm-1 col-form-label">Nome:</label>
+            <div class="col-sm-5">
+              <!--  th:field   associa input com cada campo com o atibuto do obj-->
+              <input id="nome" class="form-control" type="text" th:field="*{nome}" />
+            </div>
+            <div class="col-sm-5">
+              <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="email" class="col-sm-1 col-form-label">Email:</label>
+            <div class="col-sm-5">
+              <!--  th:field   associa input com cada campo com o atibuto do obj-->
+              <input id="email" class="form-control" type="text" th:field="*{email}" />
+            </div>
+            <div class="col-sm-5">
+              <span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="dataNascimento" class="col-sm-1 col-form-label">Data de Nascimento:</label>
+            <div class="col-sm-5">
+              <!--  th:field   associa input com cada campo com o atibuto do obj-->
+              <input id="dataNascimento" class="form-control" type="date" th:field="*{dataNascimento}" />
+            </div>
+            <div class="col-sm-5">
+              <span class="mensagem" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="senha" class="col-sm-1 col-form-label">Senha:</label>
+            <div class="col-sm-5">
+              <!--  th:field   associa input com cada campo com o atibuto do obj-->
+              <input id="senha" class="form-control" type="password" th:field="*{senha}" />
+            </div>
+            <div class="col-sm-5">
+              <span class="mensagem" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+            </div>
+          </div>
+          <input class="btn btn-primary" type="submit" value="Salvar" />
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
