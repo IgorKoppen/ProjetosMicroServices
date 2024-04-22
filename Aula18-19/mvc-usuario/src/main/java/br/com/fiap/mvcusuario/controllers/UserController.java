@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/form")
     public String loadForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("userDTO", new UserDTO());
         return "usuario/novo-usuario";
     }
 
@@ -48,8 +48,8 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String findById(@PathVariable("id") Long id, Model model){
-        User user = service.findById(id);
-        model.addAttribute("user", user);
+        UserDTO user = service.findById(id);
+        model.addAttribute("userDTO", user);
         return "/usuario/editar-usuario";
     }
 
@@ -58,7 +58,7 @@ public class UserController {
                          @Valid UserDTO userDTO,
                          BindingResult result) {
         if(result.hasErrors()) {
-            userDTO.id();
+            userDTO.setId(id);
             return "/usuario/editar-usuario";
         }
         service.update(userDTO);

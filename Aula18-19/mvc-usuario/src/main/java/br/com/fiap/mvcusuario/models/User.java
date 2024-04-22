@@ -22,14 +22,6 @@ import java.time.LocalDate;
 @Table(name = "tb_user")
 public class User {
 
-    public User(UserDTO userDTO) {
-        this.id = userDTO.id();
-        this.nome = userDTO.nome();
-        this.email = userDTO.email();
-        this.dataNascimento = userDTO.dataNascimento();
-        this.moment = userDTO.moment();
-        this.senha = userDTO.senha();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
